@@ -1,0 +1,155 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="card-body" >
+    <div class="row">
+                    <div class="col-xl-6 col-lg-12">
+                        <div class="card">
+
+                           <img src="{{url_for('static', filename='my_plot.png')}}">
+                        </div>
+					</div>
+                    <div class="col-xl-6 col-lg-12">
+                        <div class="card">
+
+                           <img src="{{url_for('static', filename='my_pie.png')}}">
+                        </div>
+					</div>
+                    <div class="col-xl-6 col-lg-12">
+                        <div class="card">
+
+                           <img src="{{url_for('static', filename='my_line.png')}}">
+                        </div>
+					</div>
+                    <div class="col-xl-6 col-lg-12">
+                        <div class="card">
+
+                           <img src="{{url_for('static', filename='multi_line.png')}}">
+                        </div>
+					</div>
+        <div class="col-12">
+            <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Sentiment</h4>
+
+                            </div>
+                            <div class="card-body">
+                                <div class="basic-list-group">
+                                    <ul class="list-group">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Positive <span class="badge badge-primary badge-pill">{{pos}} %</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Negative Tweets <span class="badge badge-primary badge-pill">{{neg}} %</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Neutral Tweets<span class="badge badge-primary badge-pill">{{neu}} %</span>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+            </div>
+
+        </div>
+
+<div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Datatable sentiment</h4>
+
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="example2" class="display" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Text</th>
+                                                <th>Polarity</th>
+                                                <th>Sentiment</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody >
+                                        {% for  value in result %}
+                                            <tr>
+                                              <td> {{value["Tweets"]}} </td>
+                                            <td> {{value["Polarity"]}} </td>
+                                            <td>{{value["Sentiment"]}}</td>
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+    </div>
+
+</div>
+
+</div>
+
+ {% endblock %}
+
+
+
+<!--<body onload="drop_down_block()">-->
+<!--  <a href="{{ url_for('home') }}" id="home">HOME</a><br>-->
+<!--  <h1 style="color: #ffcc00;">Sentiment Analysis Result : </h1>-->
+
+<!--  <div class="tweet-bar">-->
+<!--    <input type="button" onclick="drop_down_block()" id="view" value="" class="btn">-->
+<!--  </div>-->
+
+<!--  <div class="super2">-->
+<!--      <div class="supera">-->
+<!--        <img src="{{url_for('static', filename='my_plotds.png')}}">-->
+<!--      </div>-->
+<!--      <div class="supera">-->
+<!--        <h3>Positive Tweets :: {{pos}}</h3><br>-->
+<!--        <h3>Negative Tweets :: {{neg}}</h3><br>-->
+<!--        <h3>Neutral Tweets :: {{neu}}</h3><br>-->
+<!--      </div>-->
+<!--  </div>-->
+
+<!--  <div id="tweets">-->
+<!--      <table class="GeneratedTable">-->
+<!--        <tr>-->
+<!--          <th>Tweets</th>-->
+<!--          <th>Subjectivity</th>-->
+<!--          <th>Polarity</th>-->
+<!--          <th>Sentiment</th>-->
+<!--        </tr>-->
+<!--          {% for  value in result %}-->
+<!--            <tr>-->
+<!--              <td> {{value["Tweets"]}} </td>-->
+<!--              <td> {{value["Subjectivity"]}} </td>-->
+<!--              <td> {{value["Polarity"]}} </td>-->
+<!--              <td>{{value["Sentiment"]}}</td>-->
+<!--            </tr>-->
+<!--          {% endfor %}-->
+<!--        </table>-->
+<!--  </div>-->
+<!--</body>-->
+<!--<script>-->
+<!--  function drop_down_block(){-->
+<!--    var v = document.getElementById("tweets");-->
+<!--    if(v.style.display == "none")-->
+<!--    {-->
+<!--      v.style.display = "block";-->
+<!--      var button = document.getElementById('view');-->
+<!--      button.value = "Click Here to Hide Tweets";-->
+
+<!--    }-->
+<!--    else-->
+<!--    {-->
+<!--      v.style.display = "none";-->
+<!--      var button = document.getElementById('view');-->
+<!--      button.value = "Click Here to See Tweets";-->
+<!--    }-->
+<!--  }-->
+<!--</script>-->

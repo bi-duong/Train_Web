@@ -1,0 +1,33 @@
+SELECT t1.MonthNumber as month, sum(t2.TotalPrice) as doanhthutheothang FROM Time t1, Trip t2 where t1.TimeKey = t2.TimeToKey GROUP BY t1.MonthNumber
+SELECT t1.TrainNumber as train, COUNT(e.LastName) as employee, count(c.CustomerName) as customer FROM Trip t JOIN Train t1 ON t.TrainKey = t1.TrainKey JOIN Employee e ON t.EmployeeKey = e.EmployeeKey JOIN Customer c ON t.CustomerKey = c.CustomerKey GROUP BY t1.TrainNumber;
+select S.TrainNumber as train,SUM(P.TotalPrice) as total from Train S, Trip P where S.Trainkey=P.Trainkey Group by S.TrainNumber
+
+select e.FirstName as first,e.LastName as last,e.City as city,e.Country as country, e.PhoneNumber as phone ,S.TrainNumber as train from Employee e,Trip T, Train S where e.EmployeeKey=T.EmployeeKey and S.TrainKey=T.TrainKey
+
+SELECT s.SeatNumber as seat, e.FirstName as first, e.LastName as last, e.Country as country, e.PhoneNumber as phone, p.UnitPrice as price, t1.Date as timeto, t2.Date as timefrom, S1.StationName as totation, S2.StationName as fromtation FROM Trip T JOIN Employee e ON T.EmployeeKey = e.EmployeeKey JOIN Seat s ON s.SeatKey = T.SeatKey JOIN Price p ON p.PriceKey = s.PriceKey JOIN Time t1 ON t1.TimeKey = T.TimeToKey JOIN Time t2 ON t2.TimeKey = T.TimeFromKey JOIN Station S1 ON S1.StationKey = T.ToStationKey JOIN Station S2 ON S2.StationKey = T.FromStationKey;
+
+SELECT s.SeatNumber as seat, e.CustomerName as name, e.PhoneNumber as phone, p.UnitPrice as price,tt1.TrainNumber as train, t1.Date as timeto, t2.Date as timefrom, S1.StationName as tota, S2.StationName as fromta FROM Trip T JOIN Train tt1 ON tt1.TrainKey = T.TrainKey JOIN Customer e ON T.CustomerKey = e.CustomerKey JOIN Seat s ON s.SeatKey = T.SeatKey JOIN Price p ON p.PriceKey = s.PriceKey JOIN Time t1 ON t1.TimeKey = T.TimeToKey JOIN Time t2 ON t2.TimeKey = T.TimeFromKey JOIN Station S1 ON S1.StationKey = T.ToStationKey JOIN Station S2 ON S2.StationKey = T.FromStationKey;
+select e.FirstName as fir,e.LastName as last,e.City as city,e.Country as co, e.PhoneNumber as num,S.TrainNumber as train from Employee e,Trip T, Train S where e.EmployeeKey=T.EmployeeKey and S.TrainKey=T.TrainKey
+
+
+SELECT S1.StationName as tostationname, S2.StationName as fromtationname,P.TrainNumber as train, T1.Date as timeto, T2.Date as timefrom  FROM Station S1 JOIN Trip T ON S1.StationKey = T.ToStationKey  JOIN Train P ON P.TrainKey = T.TrainKey JOIN Station S2 ON S2.StationKey = T.FromStationKey JOIN Time T1 ON T.TimeToKey = T1.TimeKey JOIN Time T2 ON T.TimeFromKey = T2.TimeKey
+
+
+
+ SELECT NON EMPTY { [Measures].[Total Price] } ON COLUMNS, NON EMPTY { ([Time To].[Date].[Date].ALLMEMBERS * [Time From].[Date].[Date].ALLMEMBERS * [Seat].[Seat Number].[Seat Number].ALLMEMBERS * [Employee].[First Name].[First Name].ALLMEMBERS * [Employee].[Last Name].[Last Name].ALLMEMBERS * [Train].[Model Name].[Model Name].ALLMEMBERS * [Train].[Train Number].[Train Number].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Cuoiky] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+ 
+ 
+ 
+ 
+ 
+ 
+  SELECT NON EMPTY { [Measures].[Trip Number] } ON COLUMNS, NON EMPTY { ([Customer].[Customer Name].[Customer Name].ALLMEMBERS * [Train].[Train Number].[Train Number].ALLMEMBERS * [Time To].[Date].[Date].ALLMEMBERS * [Time From].[Date].[Date].ALLMEMBERS * [Seat].[Seat Number].[Seat Number].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Cuoiky] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+  
+  
+   SELECT NON EMPTY { [Measures].[Total Of Seats], [Measures].[Trip Number] } ON COLUMNS, NON EMPTY { ([Train].[Train Number].[Train Number].ALLMEMBERS * [Employee].[First Name].[First Name].ALLMEMBERS * [Employee].[Last Name].[Last Name].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Cuoiky] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+   
+   
+ SELECT NON EMPTY { [Measures].[Trip Number], [Measures].[Total Of Seats], [Measures].[Total Distance] } ON COLUMNS, NON EMPTY { ([To Station].[Station Name].[Station Name].ALLMEMBERS * [From Station].[Station Name].[Station Name].ALLMEMBERS * [Time To].[Date].[Date].ALLMEMBERS * [Time From].[Date].[Date].ALLMEMBERS * [Train].[Train Number].[Train Number].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Cuoiky] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+ 
+ 
+  SELECT NON EMPTY { [Measures].[Trip Number], [Measures].[Total Price] } ON COLUMNS, NON EMPTY { ([Seat].[Seat Number].[Seat Number].ALLMEMBERS * [Train].[Train Number].[Train Number].ALLMEMBERS * [Time To].[Date].[Date].ALLMEMBERS * [Time From].[Date].[Date].ALLMEMBERS * [To Station].[Station Name].[Station Name].ALLMEMBERS * [From Station].[Station Name].[Station Name].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Cuoiky] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS

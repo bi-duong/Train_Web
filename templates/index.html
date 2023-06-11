@@ -1,0 +1,193 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Sentiment Analysis</title>-->
+<!--    <link rel="stylesheet" href="{{ url_for('static',filename='CSS/style1.css')}}">-->
+<!--</head>-->
+<!--<body>-->
+<!--    <div class="head">-->
+<!--        <h1 style="color: #ffcc00;">Twitter Sentiment Analysis</h1>-->
+<!--    </div>-->
+
+<!--    <div class="superset">-->
+<!--        <div class="super1">-->
+<!--            <a href="https://twitter.com/" target=" "><img class="twitterimg" width="400px" src="{{url_for('static',filename = 'Twitter_bird.png')}}" ></a>-->
+<!--        </div>-->
+<!--        <div class="super1">-->
+<!--            <div class="super">-->
+<!--                <div class="inner1">-->
+<!--                    <h3>User Timeline Analysis</h3>-->
+<!--                    <form action="/predict_user" method="post">-->
+<!--                        <input type="text" name="user_name" placeholder="Enter User Name" id="1" required autocomplete="off"><br><br>-->
+<!--                        <input type="text" name="count" id="2" placeholder="Enter count" required autocomplete="off"><br><br>-->
+
+<!--                        <input type="submit" value="Predict!" class="btn">-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--                <div class="inner1">-->
+<!--                    <h3>Hashtag/Keyword Analysis</h3>-->
+<!--                    <form action="/predict_tag" method="post">-->
+<!--                        <input type="text" name="hashtag" placeholder="Enter Hashtag" id="3" required autocomplete="off"><br><br>-->
+<!--                        <input type="text" name="count" id="4" placeholder="Enter count" required autocomplete="off"><br><br>-->
+
+<!--                        <input type="submit" value="Predict!" class="btn">-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        -->
+<!--            <div class="inner2">-->
+<!--                <h3>Text Analysis</h3>-->
+<!--                <form action="/predict_sentence" method="post">-->
+<!--                    <input type="text" name="sentence" id="5" placeholder="Enter Text" required autocomplete="off" size="40px" style="height: 30px;"><br><br>-->
+
+<!--                    <input type="submit" value="Predict!" class="btn">-->
+<!--                </form>-->
+<!--            </div>-->
+<!--             <div class="inner3">-->
+<!--                <h3>Text Analysis</h3>-->
+<!--                <form action="/predict_tag_vader" method="post">-->
+<!--                    <input type="text" name="hashtag vader" id="6" placeholder="Enter Text" required autocomplete="off" size="40px" style="height: 30px;"><br><br>-->
+<!--                    <input type="text" name="count" id="7" placeholder="Enter count" required autocomplete="off"><br><br>-->
+<!--                    <input type="submit" value="Predict!" class="btn">-->
+<!--                </form>-->
+<!--            </div>-->
+
+<!--        </div>-->
+<!--    </div>-->
+<!--</body>-->
+<!--</html>-->
+{% extends 'layout.html' %}
+{% block content %}
+<div class="card-body">
+<div class="row">
+      <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">THÔNG TIN CHUYẾN TÀU</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="example2" class="display" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Ga đi</th>
+                                                <th>Ga đến</th>
+                                                <th>Chuyến tàu</th>
+                                                <th>Thời gian đi</th>
+                                                <th>Thời gian đến</th>
+                                            </tr>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                             {% for row in list5 %}
+                                            <tr>
+                                                <td>{{row.tostationname}}</td>
+                                                <td>{{row.fromtationname}}</td>
+                                                <td>{{row.train}}</td>
+                                                <td>{{row.timeto}}</td>
+                                                <td>{{row.timefrom}}</td>
+
+                                            </tr>
+                                        {% endfor %}
+
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+   <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">THÔNG TIN NHÂN VIÊN</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="example" class="display" style="min-width: 845px">
+                                        <thead>
+                                           <tr>
+                                                <th>Họ </th>
+                                                <th>Tên</th>
+                                                <th>Thành Phố</th>
+                                                <th>Số điện thoại</th>
+                                                <th>Quốc gia</th>
+                                                <th>Chuyến tàu</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                           {% for row in list6 %}
+                                            <tr>
+                                                <td>{{row.fir}}</td>
+                                                <td>{{row.last}}</td>
+                                                <td>{{row.city}}</td>
+                                                <td>{{row.num}}</td>
+                                                <td>{{row.co}}</td>
+                                                <td>{{row.train}}</td>
+
+
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+      <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">THÔNG TIN KHÁCH HÀNG</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="example3" class="display" style="min-width: 845px">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                 <th>Mã ghế ngồi</th>
+
+<th>Tên khách hàng</th>
+                                                <th>Số điện thoại</th>
+                                                <th>Giá vé</th>
+                                                <th>Chuyến tàu</th>
+                                                <th>Thời gian đi</th>
+                                                <th>Thời gian đến</th>
+                                                <th>Ga đi</th>
+                                                <th>ga đến</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for row in list7 %}
+                                            <tr>
+                                                <td><img class="rounded-circle" width="35" src="images/profile/small/pic1.jpg" alt=""></td>
+                                                <td>{{row.seat}}</td>
+                                                <td>{{row.name}}</td>
+                                                <td>{{row.phone}}</td>
+                                                <td>{{row.price}}</td>
+                                                <td>{{row.train}}</td>
+                                                <td>{{row.timeto}}</td>
+
+                                                <td>{{row.timefrom}}</td>
+                                                 <td>{{row.tota}}</td>
+                                                 <td>{{row.fromta}}</td>
+
+                                            </tr>
+ {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+</div>
+</div>
+ {% endblock %}

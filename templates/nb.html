@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="card-body">
+<div class="row">
+     <div class="col-xl-6 col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">User</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="basic-form">
+                                    <form class="d-flex align-items-center" action="/predict_user_nb" method="post">
+                                        <div class="mb-3 mb-2">
+                                            <label class="sr-only">User timeline</label>
+                                            <input type="text" name="user_name" class="form-control-plaintext" placeholder="Input user">
+                                        </div>
+                                        <div class="mb-2 mx-sm-3">
+                                            <label class="sr-only">Count</label>
+                                            <input type="text" class="form-control" name="count" placeholder="Input count">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+					</div>
+    <div class="col-xl-6 col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Tag</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="basic-form">
+                                    <form class="d-flex align-items-center" action="/predict_tag_nb" method="post">
+                                        <div class="mb-3 mb-2">
+                                            <label class="sr-only">Input Hash Tag</label>
+                                            <input type="text" name="hashtag nb" class="form-control-plaintext" placeholder="Input hastag">
+                                        </div>
+                                        <div class="mb-2 mx-sm-3">
+                                            <label class="sr-only">Count</label>
+                                            <input type="text" class="form-control" name="count" placeholder="Input count">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+					</div>
+</div>
+</div>
+ {% endblock %}

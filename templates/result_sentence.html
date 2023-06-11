@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="card-body">
+<div class="row">
+ <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Sentiment Analysis Result :</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="basic-list-group">
+                                    <ul class="list-group">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Text <span class="badge badge-primary badge-pill">{{sentence}}</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Sentiment <span class="badge badge-primary badge-pill">{{Sentiment}}</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Polarity<span class="badge badge-primary badge-pill">{{Polarity}}</span>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+</div>
+</div>
+ {% endblock %}
+
